@@ -18,10 +18,9 @@ export const filterCategories = async (category) => {
     const response = await axios.get(`${API_URL}/filter.php`, {
       params: {
         c: category,
-        // c: Chicken,
       },
     });
-    console.log(response.data.meals);
+    // console.log(response.data.meals);
     return response.data.meals;
   } catch (error) {
     console.error("Error fetching categories:", error);
