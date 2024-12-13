@@ -1,6 +1,6 @@
 import { Select, Spin } from "antd";
 import useMenu from "../hooks/useMenu";
-import { CardDishes } from "../components/cardDishes";
+import CardDishes from "../components/cardDishes";
 const { Option } = Select;
 
 const HomePage = () => {

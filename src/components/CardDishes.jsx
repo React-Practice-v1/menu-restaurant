@@ -1,8 +1,16 @@
 import { Card } from "antd";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
-export const CardDishes = ({ dishesCategories, handleCardDishes }) => {
-  console.log(dishesCategories);
+const CardDishes = ({ dishesCategories, handleCardDishes }) => {
+  const navigate = useNavigate();
+
+  const handleDishId = (id) => {
+    handleCardDishes(id);
+    // navigate("/dish");
+    navigate(`/dish/${id}`);
+  };
+
   return (
     <>
       <div
@@ -20,10 +28,12 @@ export const CardDishes = ({ dishesCategories, handleCardDishes }) => {
             style={{ width: 240 }}
             cover={<img alt={dish.strMeal} src={dish.strMealThumb} />}
           >
-            <Meta title={dish.strMeal} description="Más detalles" onClick={() => handleCardDishes(dish.idMeal)} />
+            <Meta title={dish.strMeal} description="Más detalles" onClick={() => handleDishId(dish.idMeal)} />
           </Card>
         ))}
       </div>
     </>
   );
 };
+
+export default CardDishes;

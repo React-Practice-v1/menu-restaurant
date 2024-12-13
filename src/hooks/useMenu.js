@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { filterCategories, listCategories } from "../services";
+import { dishesById, filterCategories, listCategories } from "../services";
 
 const useMenu = () => {
   const [categories, setCategories] = useState([]);
   const [dishesCategories, setDishesCategories] = useState([]);
+  const [dishDetails, setDishDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,16 +17,25 @@ const useMenu = () => {
   }, []);
 
   const handleChangeCategories = async (value) => {
-    // console.log("Valor seleccionado:", value);
-    const data = await filterCategories(value);
-    setDishesCategories(data);
+    try {
+      const data = await filterCategories(value);
+      setDishesCategories(data);
+    } catch (error) {
+      console.log("err", error);
+    }
   };
 
-  const handleCardDishes = (id) => {
-    console.log("gaaaaaaaaaaaaaaaa:", id);
+  const handleCardDishes = async (id) => {
+    try {
+      const data = await dishesById(id);
+      setDishDetails(data);
+      console.log(data);
+    } catch (error) {
+      console.log("err", error);
+    }
   };
 
-  return { categories, dishesCategories, loading, handleChangeCategories, handleCardDishes };
+  return { categories, dishesCategories, dishDetails, loading, handleChangeCategories, handleCardDishes };
 };
 
 export default useMenu;

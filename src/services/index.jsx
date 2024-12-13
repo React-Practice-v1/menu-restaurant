@@ -27,3 +27,18 @@ export const filterCategories = async (category) => {
     return [];
   }
 };
+
+export const dishesById = async (idDish) => {
+  try {
+    const response = await axios.get(`${API_URL}/lookup.php`, {
+      params: {
+        i: idDish,
+      },
+    });
+    console.log(response.data.meals[0]);
+    return response.data.meals[0];
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return [];
+  }
+};
