@@ -35,7 +35,7 @@ export const dishesById = async (idDish) => {
         i: idDish,
       },
     });
-    console.log(response.data.meals[0]);
+    // console.log(response.data.meals[0]);
     return response.data.meals[0];
   } catch (error) {
     console.error("Error fetching categories:", error);

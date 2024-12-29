@@ -21,16 +21,20 @@ const CardDishes = ({ dishesCategories, handleCardDishes }) => {
           gap: "20px",
         }}
       >
-        {dishesCategories.map((dish) => (
-          <Card
-            key={dish.idMeal}
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt={dish.strMeal} src={dish.strMealThumb} />}
-          >
-            <Meta title={dish.strMeal} description="Más detalles" onClick={() => handleDishId(dish.idMeal)} />
-          </Card>
-        ))}
+        {Array.isArray(dishesCategories) ? (
+          dishesCategories.map((dish) => (
+            <Card
+              key={dish.idMeal}
+              hoverable
+              style={{ width: 240 }}
+              cover={<img alt={dish.strMeal} src={dish.strMealThumb} />}
+            >
+              <Meta title={dish.strMeal} description="Más detalles" onClick={() => handleDishId(dish.idMeal)} />
+            </Card>
+          ))
+        ) : (
+          <p>No hay platos</p>
+        )}
       </div>
     </>
   );
