@@ -2,7 +2,20 @@ import axios from "axios";
 
 const API_URL = "https://www.themealdb.com/api/json/v1/1";
 
-export const listCategories = async () => {
+// www.themealdb.com/api/json/v1/1/list.php?c=list
+
+// export const listCategoriesSelect = async () => {
+//   try {
+//     const response = await axios.get(`${API_URL}/list.php?c=list`);
+//     console.log(response);
+//     return response;
+//   } catch (error) {
+//     console.error("Error fetching categories:", error);
+//     return [];
+//   }
+// };
+
+export const listCategoriesSelect = async () => {
   try {
     const response = await axios.get(`${API_URL}/categories.php`);
     // console.log(response.data.categories[0]);

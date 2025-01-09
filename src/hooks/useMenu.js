@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { dishesById, filterCategories, listCategories } from "../services";
+import { dishesById, filterCategories, listCategoriesSelect } from "../services";
 
 const useMenu = () => {
   const [categories, setCategories] = useState([]);
@@ -8,12 +8,12 @@ const useMenu = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getListCategories = async () => {
-      const data = await listCategories();
+    const getlistCategoriesSelect = async () => {
+      const data = await listCategoriesSelect();
       setCategories(data);
       setLoading(false);
     };
-    getListCategories();
+    getlistCategoriesSelect();
   }, []);
 
   const handleChangeCategories = async (value) => {

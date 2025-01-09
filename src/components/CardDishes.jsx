@@ -1,4 +1,4 @@
-import { Card } from "antd";
+import { Card, Empty } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
@@ -33,7 +33,8 @@ const CardDishes = ({ dishesCategories, handleCardDishes }) => {
             </Card>
           ))
         ) : (
-          <p>No hay platos</p>
+          // <p>No hay platos</p>
+          <Empty />
         )}
       </div>
     </>

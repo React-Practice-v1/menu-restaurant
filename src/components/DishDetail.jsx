@@ -11,19 +11,25 @@ const DishDetail = ({ dishDetail }) => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <div className="flex gap-10 m-10">
+        <div className="w-1/2">
+          <img className="w-full" src={dishDetail.strMealThumb} alt={dishDetail.strMeal} />
+        </div>
 
-      <h2>{dishDetail.strMeal}</h2>
-      <img src={dishDetail.strMealThumb} alt={dishDetail.strMeal} />
-      <p>{dishDetail.strInstructions}</p>
-      <h4>Ingredientes:</h4>
-      <ul>
-        {ingredients.map((item, index) => (
-          <li key={index}>
-            {item.ingredient} - {item.measure}
-          </li>
-        ))}
-      </ul>
+        <div className="w-1/2">
+          <h1 className="text-3xl font-bold"> {dishDetail.strMeal} </h1>
+          <p className="mt-2">{dishDetail.strInstructions}</p>
+          <h4 className="mt-4">Ingredientes:</h4>
+          <ul>
+            {ingredients.map((item, index) => (
+              <li key={index}>
+                {item.ingredient} - {item.measure}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       {dishDetail.strYoutube && (
         <a href={dishDetail.strYoutube} target="_blank" rel="noopener noreferrer">
           Ver en YouTube
